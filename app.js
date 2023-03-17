@@ -4,9 +4,14 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const router = express.Router();
 require("dotenv").config();
+const path = require("path");
 
 const app = express();
 app.use(express.static("Public"));
+// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'Public')));
+
+
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 mongoose.connect(process.env.MONGODB, { useNewUrlParser: true });
