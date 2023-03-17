@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const router = express.Router();
 require("dotenv").config();
+
 const app = express();
 app.use(express.static("Public"));
 app.set("view engine", "ejs");
@@ -42,7 +43,7 @@ const teamSchema = {
 const Team = new mongoose.model("Team", teamSchema);
 app.get("/", function (req, res) {
   //   res.send("form");
-  res.sendFile(__dirname + "/Public/form.html");
+  res.sendFile(__dirname + "/public/form.html");
 });
 
 app.post("/form", function (req, res) {
@@ -87,6 +88,6 @@ app.post("/form", function (req, res) {
     });
 });
 
-app.listen(process.env.port || 3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log("app is running on port 3000");
 });
